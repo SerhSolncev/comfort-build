@@ -4,6 +4,14 @@ $(document).ready(function() {
   window.observer = lozad(el);
   window.observer.observe();
 
+  setTimeout(() => {
+    $('.js-global-bg').addClass('hide')
+
+    setTimeout(() => {
+      $('.js-global-bg').remove()
+    }, 200)
+  }, 300)
+
   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
     $('body').addClass('touch-device');
     $('.js-magik-scroll').each(function() {
@@ -142,5 +150,14 @@ $(document).ready(function() {
     $('.js-tabs-block[data-id="' + tabId + '"]').addClass('active');
   });
 
+  $(document).on('click', '.js-open-menu', function() {
+    $('.js-mobile-menu').addClass('open');
+    $('body').addClass('ohidden');
+  });
+
+  $(document).on('click', '.js-close-menu', function() {
+    $('.js-mobile-menu').removeClass('open')
+    $('body').removeClass('ohidden');
+  });
 
 });
